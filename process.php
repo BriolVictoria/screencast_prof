@@ -74,7 +74,7 @@ Validator::check([
         <link rel="manifest"
               href="/site.webmanifest">
         <link rel="stylesheet"
-              href="/css/main.css">
+              href="/public/css/main.css">
     </head>
     <body>
         <h1>Récapitulatif des données soumises</h1>
