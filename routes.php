@@ -3,18 +3,18 @@
 return [
     [
         'uri' => '/', 'verb' => 'GET',
-        'action' => [Mvc\Controllers\WelcomeController::class, 'index']
+        'action' => [Mvc\Controllers\PageController::class, 'index']
     ],
     [
         'uri' => '/loss/create', 'verb' => 'GET',
-        'action' => [Mvc\Controllers\LostController::class, 'create']
+        'action' => [Mvc\Controllers\LossDeclarationController::class, 'create']
     ],
     [
         'uri' => '/loss', 'verb' => 'GET',
-        'action' => [Mvc\Controllers\LostController::class, 'show']
+        'action' => [Mvc\Controllers\LossDeclarationController::class, 'show']
     ],
     [
         'uri' => '/loss', 'verb' => 'GET',
-        'action' => [Mvc\Controllers\LostController::class, 'vue récapitulative']
+        'action' => [Mvc\Controllers\LossDeclarationController::class, 'vue récapitulative']
     ],
 ];
