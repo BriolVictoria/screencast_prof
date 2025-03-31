@@ -1,42 +1,31 @@
 <?php
 
-
-require __DIR__.'/../vendor/autoload.php';
-require CONNEXION.'/connection.php';
+require __DIR__."/../vendor/autoload.php";
+define('DATABASE_PATH', __DIR__.'/../database.sqlite');
+require __DIR__."/../core/database/dbconnection.php";
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-Capsule::schema()->dropIfExists('users');
-Capsule::schema()->create('users', function ($table) {
+Capsule::schema()->dropIfExists('countries');
+Capsule::schema()->create('countries', function ($table) {
     $table->id();
-    $table->string('name');
+    $table->string('code')->unique();
+    $table->timestamps();
+});
+
+Capsule::schema()->dropIfExists('pet_types');
+Capsule::schema()->create('pet_types', function ($table) {
+    $table->id();
+    $table->string('code')->unique();
+    $table->timestamps();
+});
+
+Capsule::schema()->dropIfExists('pet_owners');
+Capsule::schema()->create('pet_owners', function ($table) {
+    $table->id();
+    $table->string('first_name')->nullable();
+    $table->string('last_name')->nullable();
     $table->string('email')->unique();
-    $table->string('password');
-    $table->timestamps();
-});
-
-Capsule::schema()->dropIfExists('jiris');
-Capsule::schema()->create('jiris', function ($table) {
-    $table->id();
-    $table->string('name');
-    $table->timestamp('starting_at');
-    $table->foreignId('user_id')->constrained()->onDelete('cascade');
-    $table->timestamps();
-});
-
-Capsule::schema()->dropIfExists('contacts');
-Capsule::schema()->create('contacts', function ($table) {
-    $table->id();
-    $table->string('name');
-    $table->string('email')->unique();
-    $table->foreignId('user_id')->constrained()->onDelete('cascade');
-    $table->timestamps();
-});
-
-Capsule::schema()->dropIfExists('attendances');
-Capsule::schema()->create('attendances', function ($table) {
-    $table->id();
-    $table->foreignId('jiri_id')->constrained()->onDelete('cascade');
-    $table->foreignId('contact_id')->constrained()->onDelete('cascade');
+    $table->string('phone')->nullable();
     $table->timestamps();
 });
