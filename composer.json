@@ -7,7 +7,7 @@
     "psr-4": {
       "Tecgdcs\\": "core/",
       "Animal\\": "app/",
-      "Animal\\Models\\": "app/models/"
+      "Animal\\Models\\": "app/models"
     }
   },
   "authors": [
@@ -18,11 +18,10 @@
   ],
   "require": {
     "php": "^8.3",
-    "laravel/pint": "^1.21",
-    "illuminate/database": "^12.3",
-    "illuminate/events": "^12.3"
+    "illuminate/database": "^12.6",
+    "illuminate/events": "^12.6"
   },
   "require-dev": {
-    "fakerphp/faker": "^1.24"
+    "roave/security-advisories": "dev-latest"
   }
 }
