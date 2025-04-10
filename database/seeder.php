@@ -18,3 +18,22 @@ PetType::query()->truncate();
 foreach ($pet_types as $code) {
     PetType::create(compact('code'));
 }
+
+foreach (
+    [
+        'owners' => \Animal\Models\PetOwner::class,
+        'pets' => \Animal\Models\Pet::class,
+        'losses' => \Animal\Models\Loss::class,
+] as $file_name => $class_name
+) {
+    $class_name::query()->truncate();
+    $handle = fopen($file_name.'.csv', 'rb');
+    $fields = fgetcsv($handle, 1000, ';');
+    $data = [];
+    while ($line = fgetcsv($handle, 1000, ';')) {
+        foreach ($line as $k => $value) {
+            $data[$fields[$k]] = $value;
+        }
+        $class_name::create($data);
+    }
+}

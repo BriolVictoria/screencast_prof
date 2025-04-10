@@ -28,7 +28,7 @@ Capsule::schema()->create('pet_owners', function ($table) {
     $table->string('email')->unique();
     $table->string('phone')->nullable();
     $table->foreignId('country_id')
-        ->constrained();
+        ->constrained()->nullable;
     $table->timestamps();
 });
 
@@ -54,7 +54,7 @@ Capsule::schema()->create('losses', function ($table) {
     $table->timestamp('lost_at');
     $table->smallInteger('postal_code');
     $table->foreignId('country_id')
-        ->constrained();
+        ->constrained()->nullable;
     $table->foreignId('pet_id')
         ->constrained();
     $table->foreignId('pet_owner_id')
